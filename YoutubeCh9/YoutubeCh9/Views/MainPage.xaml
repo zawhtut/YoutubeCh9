@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:YoutubeCh9"
+             x:Class="YoutubeCh9.MainPage">
+
+    <Grid>
+        <Image Source="ColoredBackground" VerticalOptions="Fill" HorizontalOptions="Fill" Aspect="Fill"/>
+        <ListView x:Name="videoList" 
+		BackgroundColor="Transparent"
+		RowHeight="200" ItemsSource="{Binding .}" SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid RowSpacing="5" ColumnSpacing="0" Margin="10,5" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="AUTO"/>
+                            </Grid.RowDefinitions>
+
+                            <Image Source="{Binding Thumbnail}" Aspect="AspectFill" Grid.RowSpan="2" />
+                            <Image Source="ShadowOverlay" Grid.RowSpan="2"  Aspect="Fill" VerticalOptions="End" HorizontalOptions="Fill" />
+
+                            <Grid Margin="10" RowSpacing="10" ColumnSpacing="10" Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="AUTO"/>
+                                    <RowDefinition Height="35"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="AUTO"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- <Label Text="{Binding Title}"  Grid.Row="0" Grid.ColumnSpan="3" Style="{StaticResource TitleLable}" LineBreakMode="NoWrap"/>
+
+                                 <Label Text="{Binding Description}" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" Style="{StaticResource HandleLabel}" /> -->
+
+                                <StackLayout Orientation="Horizontal"  VerticalOptions="Center" Grid.Column="2" Grid.Row="1" Spacing="5">
+                                    <!-- <Image Source="Eye"/> -->
+                                    <Label Text="{Binding ViewCount}" Style="{StaticResource HandleLabel}" />
+                                    <Label Text="views" Style="{StaticResource BodyLabel}"/>
+                                </StackLayout>
+                            </Grid>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+
+</ContentPage>
